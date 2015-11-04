@@ -2,16 +2,16 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.*;
-import java.util.ArrayList;
+import java.util.Random;
 
 public class ManyWindows {
     JFrame frame;
     JLabel label;
     Thread thread1;
-    Toolkit tk = Toolkit.getDefaultToolkit();
-    Dimension screenSize = tk.getScreenSize();
-    int width = screenSize.width;
-    int height = screenSize.height;
+    //Toolkit tk = Toolkit.getDefaultToolkit();
+    //Dimension screenSize = tk.getScreenSize();
+    int width = 1024;
+    int height = 768;
     int randomHeight;
     int randomWidth;
     
@@ -25,12 +25,13 @@ public class ManyWindows {
     
     public class thread1Runner implements Runnable {
         public void run() {
-            for (int i = 0; i < 5; i++) {
+            while (true) {
                 frame = new JFrame("Doot Doot");
                 frame.setSize(150, 75);
-                frame.add(BorderLayout.CENTER, label);
-                randomWidth = (int) Math.random() * width;
-                randomHeight = (int) Math.random() * height;
+                frame.add(label);
+                randomWidth = (int) (Math.random() * width);
+                randomHeight = (int) (Math.random() * height);
+                //frame.setLocation(randomWidth, randomHeight);
                 frame.setLocation(randomWidth, randomHeight);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
@@ -41,6 +42,7 @@ public class ManyWindows {
                     
                 }
             }
+            
         }
     }
     
