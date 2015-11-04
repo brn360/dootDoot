@@ -1,17 +1,17 @@
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.*;
-import java.util.Random;
 
-public class ManyWindows {
+public class ManyWindows{
     JFrame frame;
     JLabel label;
     Thread thread1;
-    //Toolkit tk = Toolkit.getDefaultToolkit();
-    //Dimension screenSize = tk.getScreenSize();
-    int width = 1024;
-    int height = 768;
+    Toolkit tk = Toolkit.getDefaultToolkit();
+    Dimension screenSize = tk.getScreenSize();
+    int width = screenSize.width;
+    int height = screenSize.height;
     int randomHeight;
     int randomWidth;
     
@@ -22,11 +22,15 @@ public class ManyWindows {
         thread1.start();
     }
     
+
     
-    public class thread1Runner implements Runnable {
+    
+    
+    public class thread1Runner implements Runnable, KeyListener {
         public void run() {
             while (true) {
                 frame = new JFrame("Doot Doot");
+                frame.addKeyListener(this);
                 frame.setSize(150, 75);
                 frame.add(label);
                 randomWidth = (int) (Math.random() * width);
@@ -36,13 +40,28 @@ public class ManyWindows {
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
                 try {
-                thread1.sleep(500);
+                thread1.sleep(1);
                 }
                 catch (Exception ex) {
                     
                 }
             }
             
+        }
+        
+        public void keyPressed(KeyEvent key) {
+        
+        }
+    
+        public void keyReleased(KeyEvent txt) {
+        //do nothing
+        }
+    
+        public void keyTyped(KeyEvent key) {
+            char magic = key.getKeyChar();
+            if (magic == 'c') {
+                System.exit(0);
+            }
         }
     }
     
