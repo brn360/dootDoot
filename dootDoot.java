@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 //Declaring the main class
-public class dootDoot extends JFrame implements ActionListener, KeyListener{
+public class dootDoot extends JFrame implements ActionListener{
     //MakeQuadEqWork Quad = new MakeQuadEqWork(this);
     
     //Setting up the first row with 2 buttons
@@ -25,10 +25,10 @@ public class dootDoot extends JFrame implements ActionListener, KeyListener{
         
         //I will add listeners here at some point
         dootdoot.addActionListener(this);
-        dootdoot.addKeyListener(this);
-        
 
         
+
+
         
         //Adding row1 to the frame
         FlowLayout flo = new FlowLayout(FlowLayout.CENTER);
@@ -44,20 +44,6 @@ public class dootDoot extends JFrame implements ActionListener, KeyListener{
         ManyWindows windows = new ManyWindows();
     }
     
-    public void keyPressed(KeyEvent key) {
-        
-    }
-    
-    public void keyTyped(KeyEvent key) {
-        char magic = key.getKeyChar();
-        if (magic == 'c') {
-            System.exit(0);
-        }
-    }
-    
-    public void keyReleased(KeyEvent txt) {
-        //do nothing
-    }
     
     //My main method
     public static void main(String[] args) {
